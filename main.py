@@ -24,7 +24,6 @@ class DPISlots(BaseModel):
     """
     JSON Schema for DPI slots
     """
-
     dpi_1: int
     dpi_2: int
     dpi_3: int
@@ -159,7 +158,7 @@ def evaluate_info(
                 },
                 {
                     "role": "user",
-                    "content": "Suggest 5 DPI values for the user based on the context provided.",
+                    "content": "Suggest 5 values for the user based on the context provided.",
                 },
             ],
             stream=False,
