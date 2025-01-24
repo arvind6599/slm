@@ -53,3 +53,131 @@ PROMPT_LIBRARY = {
               - CUSTOM MACROS: Create your own custom macros for specific in-game actions or commands.
 """,
 }
+
+
+actions_macros = {
+    "Copy": {
+        "description": "Copies the selected text or item.",
+        "default_keys": "Ctrl+C"
+    },
+    "Paste": {
+        "description": "Pastes the copied text or item.",
+        "default_keys": "Ctrl+V"
+    },
+    "Undo": {
+        "description": "Reverses the last action performed.",
+        "default_keys": "Ctrl+Z"
+    },
+    "Redo": {
+        "description": "Reapplies the last undone action.",
+        "default_keys": "Ctrl+Y"
+    },
+    "Volume Up": {
+        "description": "Increases the system volume.",
+        "default_keys": "None"
+    },
+    "Volume Down": {
+        "description": "Decreases the system volume.",
+        "default_keys": "None"
+    },
+    "Mute": {
+        "description": "Mutes the system audio.",
+        "default_keys": "None"
+    },
+    "Play/Pause": {
+        "description": "Toggles media playback.",
+        "default_keys": "Media Key"
+    },
+    "Next Track": {
+        "description": "Skips to the next track in a playlist.",
+        "default_keys": "Media Key"
+    },
+    "Previous Track": {
+        "description": "Returns to the previous track in a playlist.",
+        "default_keys": "Media Key"
+    },
+    "Open Calculator": {
+        "description": "Launches the calculator application.",
+        "default_keys": "None"
+    },
+    "Lock Screen": {
+        "description": "Locks the computer screen.",
+        "default_keys": "Windows+L"
+    },
+    "Show Desktop": {
+        "description": "Minimizes all windows to show the desktop.",
+        "default_keys": "Windows+D"
+    },
+    "Game Action - Reload": {
+        "description": "Performs the reload action in FPS games.",
+        "default_keys": "R"
+    },
+    "DPI Up": {
+        "description": "Increases the mouse DPI setting.",
+        "default_keys": "None"
+    },
+    "DPI Down": {
+        "description": "Decreases the mouse DPI setting.",
+        "default_keys": "None"
+    },
+    "Sniper DPI": {
+        "description": "Temporarily reduces the DPI for precision aiming.",
+        "default_keys": "None"
+    },
+    "Switch Profile": {
+        "description": "Changes to a different device profile.",
+        "default_keys": "None"
+    },
+    "Text Snippet": {
+        "description": "Inserts a predefined text snippet.",
+        "default_keys": "None"
+    },
+    "Start/Stop Recording": {
+        "description": "Toggles recording in OBS or similar software.",
+        "default_keys": "None"
+    },
+    "Switch Scene": {
+        "description": "Switches scenes in OBS or similar software.",
+        "default_keys": "None"
+    },
+    "Custom Macro": {
+        "description": "Executes a user-defined macro sequence.",
+        "default_keys": "None"
+    },
+    "Advanced Script": {
+        "description": "Executes a custom LUA script for complex actions.",
+        "default_keys": "None"
+    },
+    "Brush Size Increase": {
+        "description": "Increases the brush size in graphic design tools.",
+        "default_keys": "None"
+    },
+    "Brush Size Decrease": {
+        "description": "Decreases the brush size in graphic design tools.",
+        "default_keys": "None"
+    },
+    "Zoom In": {
+        "description": "Zooms into the active window or application.",
+        "default_keys": "Ctrl++"
+    },
+    "Zoom Out": {
+        "description": "Zooms out of the active window or application.",
+        "default_keys": "Ctrl+-"
+    },
+}
+
+# Function-Compatible Dictionary
+def get_actions():
+    return actions_macros
+
+# Example function to list all actions and descriptions
+def list_actions():
+    actions = get_actions()
+    for name, details in actions.items():
+        print(f"Action: {name}")
+        print(f"  Description: {details['description']}")
+        print(f"  Default Keys: {details['default_keys']}\n")
+
+# Call the function to display all actions
+if __name__ == "__main__":
+    list_actions()

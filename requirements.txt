@@ -1,0 +1,8 @@
+ollama
+streamlit
+pandas
+numpy
+pydantic
+datetime
+scipy
+absl-py
