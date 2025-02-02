@@ -1,20 +1,83 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Summary</title>
-</head>
-<body>
-    <h1>Summary of Your Responses</h1>
-    <h2>General Details</h2>
-    <p>Name: {{ general_details["Name"] }}</p>
-    <p>Age: {{ general_details["Age"] }}</p>
-    <p>Occupation: {{ general_details["Occupation"] }}</p>
-    
-    <h2>Your Answers</h2>
-    <p>Question 1: {{ question_1 }}</p>
-    <p>Question 2: {{ question_2 }}</p>
-    <p>Question 3: {{ question_3 }}</p>
-    
-    <a href="/">Start Over</a>
-</body>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Questionnaire Summary</title>
+    <style>
+      /* Overall body styling with a gradient background */
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+      }
+      /* Container to center and style the summary content */
+      .container {
+        background-color: #fff;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        width: 80%;
+        max-width: 800px;
+      }
+      /* Header styling */
+      h1 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 30px;
+      }
+      /* Each Q&A pair is styled as a card-like item */
+      .summary-item {
+        background-color: #f8f8f8;
+        padding: 15px 20px;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+      }
+      .summary-item h2 {
+        font-size: 1.2em;
+        margin: 0 0 5px;
+        color: #555;
+      }
+      .summary-item p {
+        margin: 0;
+        color: #777;
+      }
+      /* Restart button styling */
+      .restart-button {
+        display: block;
+        margin: 30px auto 0;
+        padding: 12px 30px;
+        font-size: 1em;
+        background-color: #f44336;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .restart-button:hover {
+        background-color: #d32f2f;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Questionnaire Summary</h1>
+      <!-- Loop through the messages to display each question and its answer -->
+      {% for message in messages %}
+      <div class="summary-item">
+        <h2>Q: {{ message.question }}</h2>
+        <p>A: {{ message.answer }}</p>
+      </div>
+      {% endfor %}
+      <!-- Button to restart the questionnaire -->
+      <form action="{{ url_for('restart') }}" method="post">
+        <button type="submit" class="restart-button">Start Over</button>
+      </form>
+    </div>
+  </body>
 </html>

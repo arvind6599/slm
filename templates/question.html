@@ -1,17 +1,78 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-    <title>Question {{ q_num }}</title>
-</head>
-<body>
-    <h1>Question {{ q_num }}</h1>
-    <form method="post">
-        <p>{{ question }}</p>
-        {% for choice in choices %}
-            <input type="radio" id="{{ choice }}" name="q{{ q_num }}" value="{{ choice }}" required>
-            <label for="{{ choice }}">{{ choice }}</label><br>
-        {% endfor %}
-        <button type="submit">Next</button>
-    </form>
-</body>
+  <head>
+    <title>Question</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #f0f8ff;
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        margin: 50px auto;
+        width: 60%;
+        padding: 20px;
+        background: #fff;
+        box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        border-radius: 8px;
+      }
+      h2, h3 {
+        margin-bottom: 20px;
+      }
+      button {
+        padding: 10px 20px;
+        margin: 10px;
+        font-size: 1em;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .option-button {
+        background-color: #4CAF50;
+        color: white;
+      }
+      .custom-button {
+        background-color: #008CBA;
+        color: white;
+      }
+      .custom-answer {
+        padding: 10px;
+        width: 80%;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 1em;
+      }
+      form.inline {
+        display: inline;
+      }
+      hr {
+        margin: 40px 0;
+        border: 0;
+        border-top: 1px solid #eee;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>{{ question }}</h2>
+      <h3>Select an answer:</h3>
+      <!-- Display a button for each predefined option -->
+      {% for option in options %}
+        <form action="{{ url_for('question') }}" method="post" class="inline">
+          <input type="hidden" name="response" value="{{ option }}">
+          <button type="submit" class="option-button">{{ option }}</button>
+        </form>
+      {% endfor %}
+      
+      <hr>
+      <h3>Or provide a custom answer:</h3>
+      <form action="{{ url_for('question') }}" method="post">
+        <input type="text" name="custom_response" placeholder="Enter your answer" class="custom-answer" required>
+        <button type="submit" class="custom-button">Submit Custom Answer</button>
+      </form>
+    </div>
+  </body>
 </html>
